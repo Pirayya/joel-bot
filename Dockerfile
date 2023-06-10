@@ -11,7 +11,8 @@ WORKDIR /joel-bot
 # RUN cargo install
 RUN cargo build --release
 
-FROM debian:buster
+FROM debian:slim-buster
+
 COPY --from=builder /joel-bot/target/release/joel-bot /joel-bot
 COPY config.yaml Rocket.toml /
 RUN apt update
